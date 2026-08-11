@@ -77,7 +77,7 @@
 
 | **reviewed_at** | **reviewer_role** | **review_result** | **note** |
 | --- | --- | --- | --- |
-| 2026-08-11 | 김민서 | `PASS | FAIL` |
+| 2026-08-11 | 김민서 | `PASS` | `FAIL` |
 - peer review가 끝나면 `document_state: Baselined`로 바꾼다.
 - baseline 뒤 요구 의미 변경은 `docs/change-log.md` 한 곳에 기록한다.
 - 실제 회사의 경영진 승인을 받지 않았다면 승인 서명을 꾸미지 않는다.

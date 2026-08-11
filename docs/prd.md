@@ -62,22 +62,10 @@
 | `AC-FAQ-LOAD-001` | 유효 FAQ candidate | MongoDB load | unique `faq_id` 위반 0,target 차이 0 | `evidence/day22-evidence.md` | Day22 | planned |
 | `AC-QUERY-001` | fixture 적재 완료 | 지정 SQL·Mongoquery 실행 | 두 expected 결과와 일치 | `evidence/final-verification.md` | Day23 | planned |
 | `AC-SCHEDULE-001` | 수동 fixture run 성공 | 가까운 시각 예약 | `trigger=scheduled` run1개 뒤 scheduler 중지 | `evidence/scheduler-run.md` | Day23 | planned |
-| `AC-VEH-DATA-001` | `<TODO: 정상 vehicle 입력>`
-- 확인중 | `<TODO: quality·load 실행>` 
-- 확인중 | `<TODO: null·duplicate·target 값>`
-- 확인중 | `<TODO: 정확한 경로>`
-- 확인중 | Day22 | planned |
+| `AC-VEH-DATA-001` | 정상 vehicle 입력 | quality·load 실행 | null·duplicate·target 값 | output/<run_id>/quality-report.json | Day22 | planned |
 | `AC-FAQ-DATA-001` | FAQ fixture | transform·load·query | identity·license·attribution누락 0 | `evidence/day22-evidence.md` | Day22 | planned |
-| `AC-IDEMP-001` | `<TODO: 동일 checksum 입력>`
-- 확인중 | `<TODO: 두 번 실행>`
-- 확인중 | `<TODO: before·after count>`
-- 확인중 | `<TODO: 정확한 경로>`
-- 확인중 | Day23 | planned |
-| `AC-SOURCE-001` | `<TODO: robots·license·allowlist·schema 실패>`
-- 확인중 | `<TODO: collector 실행>`
-- 확인중 | `<TODO: 우회·write·sanitized 상태>`
-- 확인중 | `<TODO: 정확한 경로>`
-- 확인중 | Day22 | planned |
+| `AC-IDEMP-001` | 동일 checksum의 자동차·FAQ fixture | 동일 entry point를 동일 fixture으로 두 번 실행 | business key·faq_id 유지, 중복 0, 두 run record 기록 | `evidence/retry-idempotency.md` | Day23 | planned |
+| `AC-SOURCE-001` | robots 차단·license 미확인·allowlist 밖 URL·schema 불일치 | collector 실행 | 우회·allowlist 밖 요청·DB write 0, blocked·failed 상태·sanitized error 기록 | `evidence/day22-evidence.md` | Day22 | planned |
 | `AC-SECRET-001` | 제출 후보 전체 | tracked file·log scan | credential·privateendpoint 의심 0 | `evidence/requirements-review.md` | Day23 | planned |
 | `AC-OBS-001` | 성공·실패 fixture | pipeline 실행 | run·stage 상태와 sanitizederror 기록 | `logs/sanitized-success.jsonl`,`evidence/retry-idempotency.md` | Day23 | planned |
 | `AC-RETRY-001` | timeout·503·비재시도 fixture | retry wrapper 실행 | retry 대상만 최대 3회, 나머지 즉시 종료 | `evidence/retry-idempotency.md` | Day23 | planned |
