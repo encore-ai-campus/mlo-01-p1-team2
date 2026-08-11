@@ -1,0 +1,22 @@
+
+version: 1
+project: mlo-01-02
+
+sources:
+  - id: molit_5498_2
+    provider: MOLIT
+    type: xlsx
+    enabled: true
+    primary: true
+    url: "https://example.molit.go.kr/data/main.xlsx"
+    api_key_env: MOLIT_API_KEY
+    purpose: "차량 데이터 수집"
+
+  - id: molit_5498_2_fallback
+    provider: MOLIT
+    type: xlsx
+    enabled: true
+    primary: false
+    fallback_for: molit_5498_2
+    path: "./data/fallback/molit_5498_2.xlsx"
+    purpose: "기본 자료 수집 실패 시 로컬 파일 사용"
