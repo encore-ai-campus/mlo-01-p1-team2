@@ -14,7 +14,7 @@ from bs4 import BeautifulSoup
 BASE_URL = "http://192.168.0.51:4000"
 
 # 실제 API 키 입력
-API_KEY = "ucar_v1_993d86bd92a2259a_xnMJx16Nvr5DwhW13apEe0Q4RcbgGTXFm5NviLkpJNA"
+API_KEY = ""
 
 BASE_DIR = Path(__file__).resolve().parent
 
