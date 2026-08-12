@@ -17,6 +17,17 @@ category_urls = {
     "Mercedes-Benz": "http://192.168.0.51:4000/faqs?brand=mercedes-benz"
 }
 
+official_urls = {
+    "Hyundai": "https://www.hyundai.com/kr/ko/e",
+    "Kia": "https://www.kia.com/kr",
+    "Genesis": "https://www.genesis.com/kr/ko",
+    "Chevrolet": "https://www.chevrolet.co.kr/",
+    "Renault-KOREA": "https://www.renault.co.kr/ko/main/main.jsp",
+    "KG-Mobility": "https://www.kg-mobility.com/",
+    "BMW": "https://www.bmw.co.kr/ko/index.html",
+    "Mercedes-Benz": "https://www.mercedes-benz.co.kr/passengercars.html"
+}
+
 def collect_faqs():
     all_faqs = {}
     request_count = 0
@@ -48,10 +59,10 @@ def collect_faqs():
         for question, answer in zip(questions, answers):
 
             faq = {
-                "Q": question.get_text(" ", strip=True),
-                "A": answer.get_text(" ", strip=True)
-            }
-
+                "-Q": question.get_text(" ", strip=True),
+                "-A": answer.get_text(" ", strip=True),
+                "-출처": official_urls[category]
+                }
             faq_list.append(faq)
 
         all_faqs[category] = {
