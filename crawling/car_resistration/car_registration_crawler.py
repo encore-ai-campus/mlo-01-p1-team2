@@ -230,7 +230,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main() -> int:
-    load_dotenv()
+    load_dotenv(Path(__file__).resolve().parent / ".env") # 같은 폴더 내의 .env (인증 키) 파일을 읽어 환경변수로 설정
     parser = build_parser()
     args = parser.parse_args()
 
