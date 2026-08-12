@@ -13,11 +13,7 @@ fi
 
 echo "CSV 적재 시작: $CSV_PATH"
 
-mysql \
-  --local-infile=1 \
-  -u projectTest \
-  -p \
-  projectTest <<SQL
+mysql "$DB_NAME" <<SQL
 
 LOAD DATA LOCAL INFILE '$CSV_PATH'
 INTO TABLE $TABLE_NAME
