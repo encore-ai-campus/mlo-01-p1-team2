@@ -1,8 +1,10 @@
 import requests
-import time
 import json
+import time
 from bs4 import BeautifulSoup
 
+# 요청 상한선을 브랜드 총 갯수인 8로 제한. 추후 페이지 내 변동사항 발생 시 수정 가능
+MAX_REQUESTS = 8
 
 category_urls = {
     "Hyundai": "http://192.168.0.51:4000/faqs?brand=hyundai",
@@ -17,9 +19,17 @@ category_urls = {
 
 def collect_faqs():
     all_faqs = {}
+    request_count = 0
 
     for category, url in category_urls.items():
-        response = requests.get(url, timeout=10)
+        if request_count >= MAX_REQUESTS:
+            break
+
+        time.sleep(0.5)
+
+        response = requests.get(url, timeout=30)
+        request_count += 1
+
         print(category, "상태 코드:", response.status_code)
 
         soup = BeautifulSoup(response.text, "html.parser")
