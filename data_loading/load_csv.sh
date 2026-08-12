@@ -212,7 +212,7 @@ ON DUPLICATE KEY UPDATE
     brand_name = new.brand_name,
     brand_country = new.brand_country,
     model_id = new.model_id,
-    model_name = new.model_id,
+    model_name = new.model_name,
     body_type = new.body_type,
     trim = new.trim,
     model_year = new.model_year,
