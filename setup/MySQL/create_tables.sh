@@ -1,15 +1,24 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-set -e
+set -euo pipefail
 
 DB_NAME="car_data"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+MYSQL_CONFIG="$SCRIPT_DIR/.my.cnf"
+
+if [[ ! -r "$MYSQL_CONFIG" ]]; then
+    echo "MySQL 설정 파일을 찾을 수 없습니다: $MYSQL_CONFIG" >&2
+    exit 1
+fi
+
+MYSQL=(mysql --defaults-extra-file="$MYSQL_CONFIG")
 
 echo "DB 및 테이블 생성 시작"
 
-mysql <<SQL
+"${MYSQL[@]}" -e "CREATE DATABASE IF NOT EXISTS \`${DB_NAME}\`;"
 
-CREATE DATABASE IF NOT EXISTS $DB_NAME;
-USE $DB_NAME;
+"${MYSQL[@]}" "$DB_NAME" <<'SQL'
+
 CREATE TABLE IF NOT EXISTS used_cars (
     `id` INT NOT NULL,
     `listingNumber` VARCHAR(50) NOT NULL PRIMARY KEY,
