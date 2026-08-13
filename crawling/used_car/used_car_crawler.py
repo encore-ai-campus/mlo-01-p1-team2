@@ -1,5 +1,6 @@
 import time
 
+from json_to_csv import convert_json_to_csv
 from used_car_api import request_page
 from used_car_config import INCREMENTAL_MAX_ITEMS, OUTPUT_FILE
 from used_car_state import (
@@ -10,6 +11,8 @@ from used_car_state import (
 from used_car_storage import save_to_json
 
 
+
+    
 # 최초 전체 데이터를 페이지 단위로 수집하는 함수
 def initial_crawl():
     page_count = 0
@@ -56,7 +59,7 @@ def initial_crawl():
         after_id,
         initial_complete=True
     )
-
+    convert_json_to_csv()
     print()
     print("전체 수집 완료")
     print(f"총 페이지: {page_count}")
@@ -64,7 +67,7 @@ def initial_crawl():
     print(f"저장 위치: {OUTPUT_FILE}")
 
 
-# 전체 수집 완료 후 새로운 데이터 최대 500건을 수집하는 함수
+# 전체 수집 완료 후 새로운 데이터 최대 500건을 수집하는 함수-증분
 def incremental_crawl():
     last_id = get_last_id()
 
@@ -93,7 +96,10 @@ def incremental_crawl():
         last_id,
         initial_complete=True
     )
-
+    if saved_count > 0:
+        convert_json_to_csv()
+    
+    
     print()
     print("증분 수집 완료")
     print(f"조회 데이터: {len(page_data)}건")
