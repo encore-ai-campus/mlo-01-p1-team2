@@ -1,6 +1,6 @@
 import time
 
-from json_to_csv import load_json_rows, write_csv
+from json_to_csv import convert_json_to_csv
 from used_car_api import request_page
 from used_car_config import INCREMENTAL_MAX_ITEMS, OUTPUT_FILE
 from used_car_state import (
@@ -12,10 +12,6 @@ from used_car_storage import save_to_json
 
 
 
-#csv 변환 함수
-def convert_json_to_csv():
-    print("JSON 데이터를 CSV로 변환합니다.")
-    write_csv(load_json_rows())
     
 # 최초 전체 데이터를 페이지 단위로 수집하는 함수
 def initial_crawl():

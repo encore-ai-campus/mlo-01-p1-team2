@@ -2,7 +2,7 @@ from pathlib import Path
 
 
 # 서버 기본 주소
-BASE_URL = "http://43.203.233.157/"
+BASE_URL = "http://192.168.0.51:4000"
 
 # 현재 파이썬 파일과 data 폴더 경로
 BASE_DIR = Path(__file__).resolve().parent
