@@ -1,0 +1,39 @@
+{
+  "collected_at": "2026-08-11T09:16:28.707440+00:00",
+  "source_url": "http://192.168.0.51:4000/faqs?brand=bmw",
+  "records": [
+    {
+      "source_id": "bmw-app-001",
+      "company": "BMW",
+      "category": "My BMW 앱",
+      "question": "My BMW 앱의 원격 기능은 모든 차량에서 동일한가요?",
+      "answer": "차량 상태 확인과 여러 원격 기능을 제공하지만 국가, 모델, 장비와 소프트웨어에 따라 사용 가능 범위가 다릅니다. 차량 데이터 전송과 리모트 서비스 설정도 확인해야 합니다.",
+      "source_url": "https://www.bmw.co.kr/ko/more-bmw/customer-support.html",
+      "verified_date": "2026-08-11",
+      "page_url": "http://192.168.0.51:4000/faqs?brand=bmw",
+      "content_hash": "58244a92ccf5b34afd79edab1f4c91ec923358420afc433de7a842b57f76d49f"
+    },
+    {
+      "source_id": "bmw-recall-002",
+      "company": "BMW",
+      "category": "리콜",
+      "question": "BMW 차량의 리콜 대상 여부는 어떻게 확인하나요?",
+      "answer": "공식 안내에 따라 차대번호를 준비해 자동차리콜센터에서 조회합니다. 리콜 대상 수리는 BMW 공식 서비스센터에 문의해 절차를 확인하세요.",
+      "source_url": "https://www.bmw.co.kr/ko/more-bmw/customer-support.html",
+      "verified_date": "2026-08-11",
+      "page_url": "http://192.168.0.51:4000/faqs?brand=bmw",
+      "content_hash": "e1acb320af6ed6d8c2550c9111e9908812e15e3f2e6f8fdb31fa1b640ea18f82"
+    },
+    {
+      "source_id": "bmw-service-003",
+      "company": "BMW",
+      "category": "차량관리",
+      "question": "BMW 서비스 인클루시브의 정비 범위는 어디서 확인하나요?",
+      "answer": "공식 FAQ에 엔진오일, 차량 점검, 각종 필터와 브레이크 관련 항목 등이 안내되어 있습니다. 실제 포함 여부는 계약 상품, 차량 상태와 서비스 표시 조건에 따라 확인하세요.",
+      "source_url": "https://www.bmw.co.kr/ko/more-bmw/customer-support.html",
+      "verified_date": "2026-08-11",
+      "page_url": "http://192.168.0.51:4000/faqs?brand=bmw",
+      "content_hash": "2649372fa90e5e87e0ab54287bc520f61ea84510527d97a85b7654c7fd257137"
+    }
+  ]
+}
