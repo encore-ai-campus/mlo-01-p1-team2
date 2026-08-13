@@ -1,20 +1,3 @@
-#!/bin/bash
-
-set -e
-
-DB_NAME="projectTest"
-COLLECTION_NAME="faq"
-FILE_PATH="/home/ec2-user/1st_project/crawling/car_faq/data/categorized_faqs.json"
-IMPORT_PATH=/home/ec2-user/1st_project/crawling/car_faq/data/filtered_faqs.json
-
-if [ -z "$FILE_PATH" ]; then
-    echo "사용법: $0 <json_file>"
-    exit 1
-fi
-
-if [ ! -f "$FILE_PATH" ]; then
-    echo "파일이 존재하지 않습니다: $FILE_PATH"
-    exit 1
 fi
 
 
