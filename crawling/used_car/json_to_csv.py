@@ -128,11 +128,7 @@ def convert_datetime_for_db(value):
 
 
 def preprocess_datetime_fields(row):
-    """
-    행의 datetime 컬럼만 변환합니다.
-
-    원본 row를 직접 수정하지 않고 복사본을 사용합니다.
-    """
+    """createdAt과 updatedAt을 한국시간으로 변환합니다."""
 
     processed_row = dict(row)
 
@@ -196,8 +192,21 @@ def flatten_json(value, parent_key="", separator="_"):
     return flattened
 
 
+def remove_id_column(rows):
+    """CSV 저장 전에 최상위 id 컬럼만 제거합니다."""
+
+    return [
+        {
+            key: value
+            for key, value in row.items()
+            if key != "id"
+        }
+        for row in rows
+    ]
+
+
 def load_json_rows():
-    """used_car.json을 읽고 CSV 변환용 행 목록을 만듭니다."""
+    """used_car.json을 읽어 CSV 변환용 행 목록으로 만듭니다."""
 
     with INPUT_FILE.open(
         "r",
@@ -231,7 +240,7 @@ def load_json_rows():
         # 중첩 구조 복원
         normalized_row = normalize_nested_values(row)
 
-        # CSV 변환용 복사본에서만 datetime 변환
+        # CSV 변환용 복사본에만 datetime 변환 적용
         processed_row = preprocess_datetime_fields(
             normalized_row
         )
@@ -248,6 +257,9 @@ def write_csv(rows):
         flatten_json(row)
         for row in rows
     ]
+
+    # CSV에서만 최상위 id 컬럼 제거
+    flattened_rows = remove_id_column(flattened_rows)
 
     if not flattened_rows:
         print("변환할 데이터가 없습니다.")
@@ -287,11 +299,7 @@ def write_csv(rows):
 
 
 def convert_json_to_csv():
-    """
-    외부 모듈에서 호출하는 JSON → CSV 변환 함수입니다.
-
-    원본 JSON은 수정하지 않고 CSV만 생성합니다.
-    """
+    """다른 모듈에서 호출하는 JSON → CSV 변환 함수입니다."""
 
     rows = load_json_rows()
     return write_csv(rows)
