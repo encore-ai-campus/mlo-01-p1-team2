@@ -2,13 +2,13 @@
 
 set -e
 
-DB_NAME="projectTest"
+DB_NAME="project_team2"
 
 echo "테이블 생성 시작"
 
 mysql "$DB_NAME" <<SQL
 
-CREATE TABLE IF NOT EXISTS cars (
+CREATE TABLE IF NOT EXISTS used_cars (
     listing_number VARCHAR(50) NOT NULL UNIQUE PRIMARY KEY,
 
     title VARCHAR(255) NOT NULL,
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS cars (
     updated_at DATETIME
 );
 
-CREATE TABLE IF NOT EXISTS staging_cars (
+CREATE TABLE IF NOT EXISTS staging_used_cars (
     listing_number VARCHAR(50) NOT NULL UNIQUE PRIMARY KEY,
 
     title VARCHAR(255) NOT NULL,
@@ -109,6 +109,65 @@ CREATE TABLE IF NOT EXISTS staging_cars (
     created_at DATETIME,
     updated_at DATETIME
 );
+
+CREATE TABLE car_registration_long (
+    stat_month CHAR(6) NOT NULL,
+    region_level VARCHAR(10) NOT NULL,
+    sido_name VARCHAR(20) NOT NULL,
+    sigungu_name VARCHAR(50) NOT NULL DEFAULT '',
+
+    vehicle_type VARCHAR(20) NOT NULL,
+    use_type VARCHAR(20) NOT NULL,
+    registration_count INT UNSIGNED NOT NULL,
+    unit VARCHAR(10) NOT NULL,
+
+    source_measure_key VARCHAR(50) NOT NULL,
+    source_form_id INT UNSIGNED NOT NULL,
+    source_row_no INT UNSIGNED NULL,
+    is_aggregate TINYINT(1) NOT NULL,
+
+    PRIMARY KEY (
+        source_form_id,
+        stat_month,
+        region_level,
+        sido_name,
+        sigungu_name,
+        source_measure_key
+    )
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
+
+CREATE TABLE staging_car_registration_long (
+    stat_month CHAR(6) NOT NULL,
+    region_level VARCHAR(10) NOT NULL,
+    sido_name VARCHAR(20) NOT NULL,
+    sigungu_name VARCHAR(50) NOT NULL DEFAULT '',
+
+    vehicle_type VARCHAR(20) NOT NULL,
+    use_type VARCHAR(20) NOT NULL,
+    registration_count INT UNSIGNED NOT NULL,
+    unit VARCHAR(10) NOT NULL,
+
+    source_measure_key VARCHAR(50) NOT NULL,
+    source_form_id INT UNSIGNED NOT NULL,
+    source_row_no INT UNSIGNED NULL,
+    is_aggregate TINYINT(1) NOT NULL,
+
+    PRIMARY KEY (
+        source_form_id,
+        stat_month,
+        region_level,
+        sido_name,
+        sigungu_name,
+        source_measure_key
+    )
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
+
 
 SHOW TABLES;
 
