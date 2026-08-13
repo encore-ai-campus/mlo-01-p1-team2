@@ -4,8 +4,8 @@ set -e
 
 DB_NAME="projectTest"
 COLLECTION_NAME="faq"
-FILE_PATH="/home/playdata/test/faq_all.json"
-IMPORT_PATH="/home/playdata/test/faq_records.json"
+FILE_PATH="/home/ec2-user/1st_project/crawling/car_faq/data/categorized_faqs.json"
+IMPORT_PATH=/home/ec2-user/1st_project/crawling/car_faq/data/filtered_faqs.json
 
 if [ -z "$FILE_PATH" ]; then
     echo "사용법: $0 <json_file>"
@@ -19,7 +19,21 @@ fi
 
 
 echo "JSON 변환 시작"
-jq '.records' "$FILE_PATH" > "$IMPORT_PATH"
+# jq '.faq_detail' "$FILE_PATH" > "$IMPORT_PATH"
+jq '
+  [
+    to_entries[]
+    | .key as $brand
+    | .value["FAQ detail"][]
+    | {
+        source_id: .source_id,
+        brand: $brand,
+        question: .["-Q"],
+        answer: .["-A"],
+        source: .["-출처"]
+      }
+  ]
+' "$FILE_PATH" > "$IMPORT_PATH"
 
 echo "MongoDB 적재 시작"
 echo "DB         : $DB_NAME"
