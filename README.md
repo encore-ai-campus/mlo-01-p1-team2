@@ -71,7 +71,7 @@
 - API 키와 데이터베이스 비밀번호를 코드에 직접 저장하지 않습니다.
 
 ## 6. ERD
-- 추가예정
+<img width="1666" height="1432" alt="Image" src="https://github.com/user-attachments/assets/ff4dbc69-e723-473f-8f2c-d3dd56f61d8c" />
 
 
 
