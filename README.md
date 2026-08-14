@@ -119,3 +119,7 @@ upsert 방식을 사용하여 같은 파일을 2번 적재하였을 때 총 row 
 | 안길찬 | 데이터 파이프라인의 전체 과정을 경험하고 협업의 중요성을 배울 수 있었습니다. |
 | 이여찬 | 비록 규모는 소규모였으나, 시스템 전반의 설계부터 구현, 검증에 이르는 전 과정을 주도적으로 수행하며 실무 역량을 다질 수 있었습니다.   |
 
+
+## 10. 발표 자료
+
+슬라이드 URL : https://docs.google.com/presentation/d/1hwt0WtDTXdzZVzWORtrdJ5pBF6QvnrdbRru9LaU5zfY/edit?slide=id.p1#slide=id.p1
